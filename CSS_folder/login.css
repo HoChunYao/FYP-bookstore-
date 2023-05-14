@@ -1,0 +1,96 @@
+header{
+    position:static;
+  }
+  
+  body {
+    background-color: #D7CCC8;
+    font-family: Roboto, "Times New Roman", serif;
+  }
+  
+  /*.background{
+      background-image: url('black_bg.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 100%;
+  }*/
+  .form{
+    width: 380px;
+    height: 550px;
+    position: relative;
+    margin: 100px 550px;
+    background-color: rgb(196, 247, 221);
+    border-radius: 10px;
+    padding: 5px;
+    overflow: hidden;
+    justify-content: center;
+  }
+  
+  #choose-but{
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0px 0px 30px 5px rgba(10, 143, 78, 0.75);
+    border-radius: 30px;
+  }
+  .button{
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+  }
+  #button-color{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: linear-gradient(to right, #20BF55,#01BAEF);
+    border-radius: 30px;
+    transition: 0.5s;
+  }
+  .info{
+    top: 100px;
+    position: absolute;
+    width:280px;
+    transition: 0.5s;
+  }
+  .login{
+    width: 100%;
+    padding: 10px 0;
+    margin: 10px 0;
+    border-left:0;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+  }
+  .button-button{
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: linear-gradient(to right, #20BF55,#01BAEF);
+    border: 0;
+    outline: none;
+    border-radius:30px;
+  }
+  .check-box{
+    margin: 10px 10px 40px 0;
+  }
+  span {
+    font-size: 14px;
+    bottom: 75px;
+    position: absolute;
+  }
+  
+  #lgin_member,#lgin_staff {
+    left:50px;
+  }
+  #reg_staff,#reg_member{
+    left:450px;
+  }

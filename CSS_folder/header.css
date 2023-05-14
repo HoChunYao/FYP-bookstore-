@@ -1,0 +1,128 @@
+*{
+   margin:0;
+   padding:0;
+   box-sizing: border-box;
+}
+.nav2{
+   max-height:100px;
+}
+.list{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0px 10px;
+   background-color: #e2decb;
+   height:40%;
+ }
+.logo {
+   text-align: center;
+    align-items: center;
+    padding-top:0.2%;
+    height:50px;
+ }
+
+.ul1{
+   margin-bottom: 0px;
+}
+.logo .ul1{
+   margin:0px;
+}
+.logo1{
+    padding:0px;
+    border:none;
+    height: 45px;
+    padding: 0 50px;
+    background: #e2decb;
+ }
+
+ .logo1:hover{
+   cursor: pointer;
+ }
+
+.mainmenu .ul1{
+   display: flex;  
+   justify-content: center;
+ }
+ .mainmenu .ul1 li{
+   position: relative;
+   margin:0px;
+   display: flex;
+   text-transform: uppercase;
+   font-weight: 600;
+   
+ }
+
+ .nav1 {
+    text-decoration: none;
+    background-color: #e2decb;
+    height:100%;
+    width: 200px;
+    border: none;
+ }
+
+ .alllogin .ul1{
+    display: flex;
+    margin: 0px 0px 0px 0px;
+    float:right;
+ }
+
+ .alllogin .ul1 a{
+    margin: 0px 10px;
+    font-size: 1.2rem;
+    color: black;
+    text-decoration: none;
+    
+ }
+
+ .mainmenu button:hover,.alllogin button:hover{
+    color: white;
+    transition: all ease 0.4s;
+    background-color: DarkOliveGreen;
+    cursor: pointer;
+ }
+
+ .dropdown-content {
+   display: none;
+   position: absolute;
+   background-color: #f1f1f1;
+   min-width: 200px;
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   z-index: 1;
+   margin-top: 30%;
+ }
+ 
+ .dropdown-content a {
+   color: black;
+   padding: 12px 16px;
+   text-decoration: none;
+   display: block;
+ }
+ 
+ .dropdown-content a:hover {background-color: #ddd;transition:all 0.3s ease-in-out;transition-delay: 0.1s;}
+ 
+ .dropdown:hover .dropdown-content {display: block;}
+
+.search-cont{
+   margin:1% 0% 0% 1%;
+}
+.search-cont input[type=text]{
+   font-size:120%;
+   padding: 6px;
+   border: none;
+   background: #e2decb;
+}
+.search-cont button{
+   padding: 6px 10px;
+   background: #e2decb;
+   font-size: 120%;
+   border: none;
+   cursor: pointer;
+   margin: 10px 0;
+}
+
+
+.dropdown{
+   margin: none;
+   display:flex;
+}
+
