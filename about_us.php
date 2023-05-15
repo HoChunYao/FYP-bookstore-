@@ -32,7 +32,6 @@ include("header.php");
         </style>
     </head>
     <body>
-        <p>hello</p>
         <div class="container-box">
             <div class="row-image">
                 <div class="col-md-6 mt-50">
