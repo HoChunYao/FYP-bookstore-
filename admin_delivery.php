@@ -12,7 +12,15 @@ include("admin_design.php");
     <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
     
 </head>
+<script>
 
+    function confirmation()
+    {
+        var answer=confirm("Do you really want to delete this product?");
+        return answer;
+    }
+
+</script>
 <body>
             <!-- ======================= Cards ================== -->
             <div class="cardBox" style="grid-template-columns: repeat(3, 1fr);">
@@ -63,38 +71,28 @@ include("admin_design.php");
                         </td>
                     </tr>
                     <tr>
+                        <th>Delivery ID</th>
                         <th>Delivery Status</th>
-                        <th>Payment Status</th>
-                        <th>Order Details</th>
+                        <th>Payment ID</th>
                     </tr>
 
                     <tbody>
-                        <tr>
-                            <td><span class="badge bg-success">Delivered</span></td>
-                            <td><span class="badge bg-success">Success</td>
-                            <td>OD001</td> 
-                        </tr>
-
-                        <tr>
-                            <td><span class="badge bg-danger">Pending</span></td>
-                            <td><span class="badge bg-danger">Pending</td>
-                            <td>OD002</td> 
-                        </tr>
-
-                        <tr>
-                            <td><span class="badge bg-secondary">Returned</span></td>
-                            <td><span class="badge bg-success">Success</td>
-                            <td>OD003</td> 
-                        </tr>
-
-                        <tr>
-                            <td><span class="badge bg-primary">In Progress</span></td>
-                            <td><span class="badge bg-danger">Pending</td>
-                            <td>OD004</td> 
-                        </tr>
-                        <tr>
-                            <td></td>
-                        </tr>
+                    <?php
+                        $sql = "SELECT * FROM delivery";
+                        $result = $conn->query($sql);
+                        while($row = $result->fetch_assoc())
+                        {
+                    ?>			
+                    <tr>
+                        <td><?php echo $row["delivery_id"]; ?></td>
+                        <td><?php echo $row["delivery_status"]; ?></td>
+                        <td><?php echo $row["payment_id"]; ?></td>
+                        <td><a href="edit_product.php?edit&did=<?php echo $row["delivery_id"];?>">Edit</a></td>
+                        <td><a href="list_product.php?del&did=<?php echo $row["delivery_id"];?>" onclick="return confirmation();">Delete</a></td>
+                    </tr>
+				    <?php
+				        }  		
+			        ?>
                     </tbody>
                 </table>
             </div>

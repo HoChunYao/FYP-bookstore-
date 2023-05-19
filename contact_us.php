@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -65,26 +66,45 @@
                 <p><i class="fa-solid fa-envelope fa-xl"></i>    upbook23423@gmail.com</p>
                 </div>
                 <div class="col-md-6 form">
-                <form action="contact_collect.php" method="post">
+                <form method="POST">
                     <div class="form-group">
                         <label for="nameInput">Full Name</label>
-                        <input type="text" class="form-control" id="contact_name" placeholder="Enter your name">
+                            <input type="text" class="form-control" name="c_name" placeholder="Enter your name">
                     </div>
                     <br>
                     <div class="form-group">
                         <label for="emailInput">Email address</label>
-                        <input type="email" class="form-control" id="contact_email" aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            <input type="email" class="form-control" name="c_email" aria-describedby="emailHelp" placeholder="Enter email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <br>
                     <div class="form-group">
                         <label for="feedback">Feedback</label>
-                        <textarea class="form-control" id="contact_qs" placeholder="Text your message here"></textarea>
+                            <textarea class="form-control" name="c_qs" placeholder="Text your message here"></textarea>
                     </div>
                     <br>
-                    <button name="sumbit" type="submit" class="btn button">Submit</button>
+                    <button class="btn button" type="submit" name="submitbtn" >Submit</button>
                 </form>
-                <p>test</p>
+                <?php
+                include('dataconnection.php');
+                if(isset($_POST["submitbtn"])){
+                    $cname = $_POST['c_name'];
+                    $cemail = $_POST['c_email'];
+                    $creason = $_POST['c_qs'];
+
+                    $sql = "INSERT INTO enquiry VALUES('','$cname','$cemail','$creason')";
+                    $result = $conn->query($sql);
+                    if (mysqli_query($conn, $sql)) {
+                        echo "New record created successfully";
+                      } else {
+                        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                      }
+                      
+                      mysqli_close($conn);
+                }
+                ?>
+
+             
                 </div>
             </div>
         </div>

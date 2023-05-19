@@ -1,5 +1,5 @@
 <?php
-include_once 'dataconnection.php';
+include_once ('dataconnection.php');
 if(isset($_POST["submit"])){
     $name = $_POST['contact_name'];
     $email = $_POST['contact_email'];
@@ -7,8 +7,8 @@ if(isset($_POST["submit"])){
 
     $sql = "INSERT INTO enquiry 
     VALUES ('','$name','$email','$reason')";
-
-if ($conn->query($sql) === TRUE) {
+    $result = $conn->query($sql);
+if ($result === TRUE) {
 echo "<script type= 'text/javascript'>alert('New record created successfully');</script>";
 } else {
 echo "<script type= 'text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";

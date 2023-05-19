@@ -61,38 +61,27 @@ include("admin_design.php");
                     </tr>
                     <tr>
                         <div class="content">
-                            <td>1.</td>
-                            <td>M001</td>
-                            <td>Ho Chun Yao </td>
-                            <td>1211203559@student.mmu.edu.my</td>
-                            <td>018-790 2295</td>
-                            <td>1000</td>
-                            <td>43, jalan bestari 21/4 taman nusa bestari 81300 johor bahru ,johor</td>
-                            <td>
-                                <button class="edit-btn" type="button">Edit</button>
-                            </td>
+                        <?php
+                            $sql = "SELECT * FROM delivery";
+                            $result = $conn->query($sql);
+                            while($row = $result->fetch_assoc())
+                            {
+                        ?>			
+                        <tr>
+                            <td><?php echo $row["member_id"]; ?></td>
+                            <td><?php echo $row["delivery_status"]; ?></td>
+                            <td><?php echo $row["payment_id"]; ?></td>
+                            <td><a href="edit_product.php?edit&did=<?php echo $row["delivery_id"];?>">Edit</a></td>
+                            <td><a href="list_product.php?del&did=<?php echo $row["delivery_id"];?>" onclick="return confirmation();">Delete</a></td>
+                        </tr>
+                        <?php
+                            }  		
+                        ?>
+                        </tbody>
                         </div>
                     </tr>
 
-                    <tr>
-                        <div class="content">
-                            <td>2.</td>
-                            <td>M002</td>
-                            <td>Ho Chun Yao </td>
-                            <td>1211203559@student.mmu.edu.my</td>
-                            <td>018-790 2295</td>
-                            <td>1000</td>
-                            <td>43, jalan bestari 21/4 taman nusa bestari 81300 johor bahru ,johor</td>
-                            <td>
-                                <button class="edit-btn" type="button">Edit</button>
-                            </td>
-                        </div>
-                    </tr>
-                        <tr>
-                                <td colspan="9" class="btn-center">
-                                    <button type="button" class="add-btn" ><a href="admin_memberAdd.php">Add Member</a></button>
-                                </td>
-                        </tr>
+        
                 </table>
             </div>
 </body>
