@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("admin_design.php");
 include("dataconnection.php");
 
@@ -96,6 +97,7 @@ include("dataconnection.php");
                             $x++;
                     ?>			
                     <tr>
+                        <td><?php echo $x; ?></td>
                         <td><?php echo '<img src="book_img/'.$row['book_img'].'">' ?></td>
                         <td><?php echo $row["book_id"]; ?></td>
                         <td><?php echo $row["book_name"]; ?></td>

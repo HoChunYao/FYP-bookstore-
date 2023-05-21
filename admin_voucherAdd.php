@@ -76,7 +76,7 @@ include("dataconnection.php");
                             <input type="text" name="reward_point"   class=""  placeholder="reward_point" required>
 
                         <label>Staff ID</label>
-                            <input type="text" name="staff_id"   class=""  value="<?php echo "$_SESSION['staff_id']";?>" disabled>
+                            <input type="text" name="staff_id"   class=""  value="<?php echo "$_SESSION[staff_id]";?>" disabled>
 
                         <label>Reward image</label>
                             <input type="file" name="reward_img"  accept="image/jpg, image/jpeg, image/png" class="" >
