@@ -18,11 +18,11 @@ if (isset($_POST['user_id']) && isset($_POST['user_pw'])) {
 
     }
 
-    $uname = validate($_POST['user_id']);
+    $uid = validate($_POST['user_id']);
 
     $pass = validate($_POST['user_pw']);
 
-    if (empty($uname)) {
+    if (empty($uid)) {
 
         header("Location: index.php?error=User Name is required");
 
@@ -36,7 +36,7 @@ if (isset($_POST['user_id']) && isset($_POST['user_pw'])) {
 
     }else{
 
-        $sql = "SELECT * FROM user WHERE user_id='$uname' AND user_pw='$pass'";
+        $sql = "SELECT * FROM user WHERE user_id='$uid' AND user_pw='$pass'";
 
         $result = mysqli_query($conn, $sql);
 
@@ -44,7 +44,7 @@ if (isset($_POST['user_id']) && isset($_POST['user_pw'])) {
 
             $row = mysqli_fetch_assoc($result);
 
-            if ($row['user_id'] === $uname && $row['user_pw'] === $pass) {
+            if ($row['user_id'] === $uid && $row['user_pw'] === $pass) {
 
                 echo "Logged in!";
 

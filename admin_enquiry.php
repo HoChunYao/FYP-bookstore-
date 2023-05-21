@@ -1,6 +1,14 @@
 <?php
-include("admin_design.php");
+    include("admin_design.php");
+    include("dataconnection.php");
+
+        $x=0;
+        $sql = "SELECT * FROM enquiry ";
+        $result = $conn->query($sql);
+        $y = mysqli_num_rows($result);
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +30,7 @@ include("admin_design.php");
             <div class="cardBox" style="grid-template-columns: repeat(2, 1fr);">
                 <div class="card">
                     <div>
-                        <div class="numbers">4</div>
+                        <div class="numbers"><?php echo $y;?> </div>
                         <div class="cardName">Total Enquiry</div>
                     </div>
 
@@ -43,7 +51,7 @@ include("admin_design.php");
                 </div>
 
             </div>
-            <!-- ======================= Product List ================== -->
+            <!-- ======================= Enquiry List ================== -->
             <div class="table">
                 <table>
                     <tr>
@@ -62,33 +70,26 @@ include("admin_design.php");
                         <th>Question</th>
                     </tr>
                 </div>
+
+                <?php
+                //php
+                        if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                $x++;
+                ?>
+
                 <tbody>
                     <tr>
-                        <td>1.</td>
-                        <td>Curious guy</td>
-                        <td>curious123@gmail.com</td>
-                        <td>Can i get refund if i buy that book 5 days ago?</td>
-                    </tr>
-
-                    <tr>
-                        <td>2.</td>
-                        <td>Furious guy</td>
-                        <td>Furious123@gmail.com</td>
-                        <td>Can i get free gift if i buy 10 books?</td>
-                    </tr>
-                    <tr>
-                        <td>3.</td>
-                        <td>Happy guy</td>
-                        <td>happy123@gmail.com</td>
-                        <td>Did the store provide us free bookmark?</td>
-                    </tr>
-                    <tr>
-                        <td>4.</td>
-                        <td>Sad guy</td>
-                        <td>Sad@gmail.com</td>
-                        <td>When will the book Two Piece by Eiichiro Ado available for sale?</td>
+                        <td><?php echo $x;?></td>
+                        <td><?php echo $row["contact_name"] ?></td>
+                        <td><?php echo $row["contact_email"] ?></td>
+                        <td><?php echo $row["contact_qs"] ?></td>
                     </tr>
                 </tbody>
+                <?php 
+                //for while loop
+                        }
+                ?>
                 </table>
             </div>
         </div>
@@ -104,3 +105,12 @@ include("admin_design.php");
 </body>
 
 </html>
+
+<?php
+                    // for if loop
+                    }
+                    else {
+                        echo "0 results";
+                    }
+                    $conn->close();
+?>

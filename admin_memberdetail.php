@@ -1,5 +1,10 @@
 <?php
 include("admin_design.php");
+include("dataconnection.php");
+$x=0;
+$sql = "SELECT * FROM user ";
+$result = $conn->query($sql);
+$y = mysqli_num_rows($result);
 ?>
 <html>
     <head>
@@ -16,7 +21,7 @@ include("admin_design.php");
      <div class="cardBox" style="    grid-template-columns: repeat(2, 1fr);">
                 <div class="card">
                     <div>
-                        <div class="numbers">2</div>
+                        <div class="numbers"><?php echo $y;?></div>
                         <div class="cardName">Active member</div>
                     </div>
 
@@ -37,7 +42,7 @@ include("admin_design.php");
                 </div>
      </div>
 
-    <!-- ======================= Product List ================== -->
+    <!-- ======================= member List ================== -->
     <div class="table">
                 <table>
                     <tr>
@@ -59,35 +64,28 @@ include("admin_design.php");
                         <th>Member Address</th>
                         <th>Action</th>
                     </tr>
+                    <?php
+                        if ($result->num_rows > 0) {
+                         while($row = $result->fetch_assoc()) {
+                            $x++;
+                    ?>
                     <tr>
                         <div class="content">
-                            <td>1.</td>
-                            <td>M001</td>
-                            <td>Ho Chun Yao </td>
-                            <td>1211203559@student.mmu.edu.my</td>
-                            <td>018-790 2295</td>
-                            <td>1000</td>
-                            <td>43, jalan bestari 21/4 taman nusa bestari 81300 johor bahru ,johor</td>
+                            <td><?php echo $x; ?></td>
+                            <td><?php echo $row["user_id"] ?></td>
+                            <td><?php echo $row["user_name"] ?> </td>
+                            <td><?php echo $row["user_email"] ?></td>
+                            <td><?php echo $row["user_phone"] ?></td>
+                            <td><?php echo $row["user_point"] ?></td>
+                            <td><?php echo $row["user_address"] ?></td>
                             <td>
                                 <button class="edit-btn" type="button">Edit</button>
                             </td>
                         </div>
                     </tr>
-
-                    <tr>
-                        <div class="content">
-                            <td>2.</td>
-                            <td>M002</td>
-                            <td>Ho Chun Yao </td>
-                            <td>1211203559@student.mmu.edu.my</td>
-                            <td>018-790 2295</td>
-                            <td>1000</td>
-                            <td>43, jalan bestari 21/4 taman nusa bestari 81300 johor bahru ,johor</td>
-                            <td>
-                                <button class="edit-btn" type="button">Edit</button>
-                            </td>
-                        </div>
-                    </tr>
+                    <?php 
+                        }
+                    ?>
                         <tr>
                                 <td colspan="9" class="btn-center">
                                     <button type="button" class="add-btn" ><a href="admin_memberAdd.php">Add Member</a></button>
@@ -97,3 +95,9 @@ include("admin_design.php");
             </div>
 </body>
 </html>
+<?php
+} else {
+  echo "0 results";
+}
+$conn->close();
+?>
