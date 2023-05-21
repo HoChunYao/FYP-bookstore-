@@ -61,34 +61,45 @@ include("dataconnection.php");
 </head>
 
 <body>
+        <?php
+            if (isset($_GET["edit"])) {
+                $rwid = $_GET["rwid"];
+                $sql="SELECT * FROM reward WHERE reward_id='$rwid'";
+                $result = $conn->query($sql);
+                $row = $result->fetch_assoc();
+            }
+		?>
             <!-- ======================= Add Product Form================== -->
             <div class="product-form">
                 <form id="addVoucherForm" name="addVoucherForm" enctype="multipart/form-data" method="POST">
                     <h2 class="font-normal">Add Voucher</h2>
                     <div class="word">
 
+                        <label>Reward Id</label>
+                            <input type="text" name="reward_id"  value="<?php echo $row["reward_id"]?>" disabled>
+
                         <label>Reward Name</label>
-                            <input type="text" name="reward_name"  class=""  placeholder="reward_name"        required>
+                            <input type="text" name="reward_name"  value="<?php echo $row["reward_item"]?>" >
 
                         <label>Reward Quantity</label>
-                            <input type="text" name="reward_qty" class=""  placeholder="reward_quantity"       required>
+                            <input type="text" name="reward_qty" value="<?php echo $row["reward_qty"]?>" >
 
                         <label>Reward Point</label>
-                            <input type="text" name="reward_point"   class=""  placeholder="reward_point" required>
+                            <input type="text" name="reward_point"  value="<?php echo $row["reward_point"]?>" >
 
                         <label>Staff ID</label>
-                            <input type="text" name="staff_id"   class=""  value="1" disabled>
+                            <input type="text" name="staff_id"   value="<?php echo $row["staff_id"]?>" disabled>
 
                         <label>Reward image</label>
                             <input type="file" name="reward_img"  accept="image/jpg, image/jpeg, image/png" class="" >
                     </div>
 
-                            <button class="submit-btn" type="submit" name="addreward" >Submit</button>
+                            <button class="submit-btn" type="submit" name="updatereward" >Submit</button>
                 </form>
             </div>
             <?php
 
-                if (isset($_POST["addreward"])) 	
+                if (isset($_POST["updatereward"])) 	
                 {
                     $rwname = $_POST["reward_name"];  	 
                     $rwqty = $_POST["reward_qty"];
@@ -114,7 +125,7 @@ include("dataconnection.php");
                     }
 
                     if(count($message)==0){
-                        $sql = "INSERT INTO reward VALUES('', '$rwname', '$rwqty', '$rwpoint', '$sid', '$rwimg')";
+                        $sql = "UPDATE reward SET reward_img='$rwimg', reward_item='$rwname', reward_qty='$rwqty',reward_point='$rwpoint' WHERE reward_id='$rwid' ";
                         $result = $conn->query($sql);
                         if (move_uploaded_file($rwimg_tmp_name, $target_file)) {
 

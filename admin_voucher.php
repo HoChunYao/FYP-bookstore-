@@ -1,5 +1,6 @@
 <?php
 include("admin_design.php");
+include("dataconnection.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +14,12 @@ include("admin_design.php");
 </head>
 
 <body>
+    <script>
+        function confirmation(){
+            var answer=confirm("Do you really want to delete this product?");
+            return answer;
+        }
+    </script>
             <!-- ======================= Cards ================== -->
             <div class="cardBox" style="grid-template-columns: repeat(2, 1fr);">
                 <div class="card">
@@ -48,63 +55,41 @@ include("admin_design.php");
                                 <button type="button" class="all-btn" ><a href="admin_voucher.php">See all Voucher</a></button>
                         </td>
                     </tr>
-
+                    <div class="table-head">
+                        <tr>
+                            <th>Voucher image</th>
+                            <th>Voucher Id</th>
+                            <th>Voucher name</th>
+                            <th>Voucher Quantity</th>
+                            <th>Voucher point</th>
+                            <th>Staff Id</th>
+                            <th colspan='2';>Action</th>    
+                        </tr>
+                    </div>
+                    <tbody>
                     <tr>
-                        <th>No.</th>
-                        <th>Voucher Id</th>
-                        <th>Voucher image</th>
-                        <th>Voucher name</th>
-                        <th>Voucher point</th>
-                        <th>Voucher Quantity</th>
-                        <th>Staff Id</th>
-                        <th>Action</th>
-                    </tr>
-                <div class="repeat">
+                    <?php
+                        $sql = "SELECT * FROM reward";
+                        $result = $conn->query($sql);
+                        while($row = $result->fetch_assoc())
+                        {
+                    ?>			
                     <tr>
-                        <td>1.</td>
-                        <td>V001</td>
-                        <td>
-                            <img src="media/free_delivery.png" alt="">
-                        </td>
-                        <td>free delivery</td>
-                        <td>1000 point</td>
-                        <td>3000</td>
-                        <td>1211203559</td>
-                        <td>
-                            <button class="edit-btn" type="button">Edit</button>
-                        </td>
+                        <td><?php echo '<img src="reward_img/'.$row['reward_img'].'">' ?></td>
+                        <td><?php echo $row["reward_id"]; ?></td>
+                        <td><?php echo $row["reward_item"]; ?></td>
+                        <td><?php echo $row["reward_qty"]; ?></td>
+                        <td><?php echo $row["reward_point"]; ?></td>
+                        <td><?php echo $_SESSION["staff_id"]; ?></td>
+                        <td><a href="admin_voucherEdit.php?edit&rwid=<?php echo $row["reward_id"];?>">Edit</a></td>
+                        <td><a href="admin_voucher.php?del&rwid=<?php echo $row["reward_id"];?>" onclick="return confirmation();">Delete</a></td>
                     </tr>
-                </div>
-
-                    <tr>
-                        <td>2.</td>
-                        <td>V002</td>
-                        <td>
-                            <img src="media/5percent.png" alt="">
-                        </td>
-                        <td>5% offer</td>
-                        <td>3000 point</td>
-                        <td>3000</td>
-                        <td>1211203559</td>
-                        <td>
-                            <button class="edit-btn" type="button">Edit</button>
-                        </td>
+				    <?php
+				        }  		
+			        ?>
                     </tr>
-
-                    <tr>
-                        <td>3.</td>
-                        <td>V002</td>
-                        <td>
-                            <img src="media/10percent.png" alt="">
-                        </td>
-                        <td>10% offer</td>
-                        <td>3000 point</td>
-                        <td>3000</td>
-                        <td>1211203559</td>
-                        <td>
-                            <button class="edit-btn" type="button">Edit</button>
-                        </td>
-                    </tr>
+                    </tbody>
+                   
 
                     <tr>
                         <!--<div class="all-product">-->
@@ -119,7 +104,16 @@ include("admin_design.php");
             </div>
         </div>
     </div>
-
+    <?php
+        if (isset($_GET["del"])) 
+        {
+            $rwid=$_GET["rwid"];
+            $sql="DELETE FROM reward where reward_id='$rwid'";
+            $result = $conn->query($sql);
+            
+            header("Refresh:0");
+        }
+    ?>
     <!-- =========== Scripts =========  -->
     <script src="main.js"></script>
 

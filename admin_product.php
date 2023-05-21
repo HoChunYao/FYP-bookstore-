@@ -75,6 +75,7 @@ include("dataconnection.php");
                         <th>Book image</th>
                         <th>Book id</th>
                         <th>Book name</th>
+                        <th>Book author</th>
                         <th>Genre</th>
                         <th>Book Description</th>
                         <th>Price</th>
@@ -94,6 +95,7 @@ include("dataconnection.php");
                         <td><?php echo '<img src="book_img/'.$row['book_img'].'">' ?></td>
                         <td><?php echo $row["book_id"]; ?></td>
                         <td><?php echo $row["book_name"]; ?></td>
+                        <td><?php echo $row["book_author"]; ?></td>
                         <td><?php echo $row["book_genre"]; ?></td>
                         <td><?php echo $row["book_des"]; ?></td>
                         <td><?php echo $row["book_price"]; ?></td>
