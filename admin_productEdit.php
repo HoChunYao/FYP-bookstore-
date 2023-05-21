@@ -1,6 +1,6 @@
 <?php
 include("admin_design.php");
-include("dataconnection.php")
+include("dataconnection.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,44 +58,55 @@ include("dataconnection.php")
 </head>
 
 <body>
+        <?php
+            if (isset($_GET["edit"])) {
+                $bid = $_GET["bid"];
+                $sql="SELECT * FROM book WHERE book_id='$bid'";
+                $result = $conn->query($sql);
+                $row = $result->fetch_assoc();
+            }
+		?>
 
             <!-- ======================= Add Product Form================== -->
             <div class="product-form">
                 <form id="addProductForm" name="addProductForm" enctype="multipart/form-data" method="POST">
-                    <h2 class="font-normal">Add Product</h2>
+                    <h2 class="font-normal">Update Product</h2>
+
+                        <label>Book Id</label>
+                            <input type="text" name="book_id" value="<?php echo $row["book_id"]?>" disabled>
 
                         <label>Book Name</label>
-                            <input type="text" name="book_name"  class=""  placeholder="Book_name"        required>
+                            <input type="text" name="book_name" value="<?php echo $row["book_name"]?>" >
 
                         <label>Book Author</label>
-                            <input type="text" name="book_author"  class=""  placeholder="Book_Author"        required>
+                            <input type="text" name="book_author" value="<?php echo $row["book_author"]?>"  >
 
                         <label>Book Genre</label>
-                            <input type="text" name="book_genre" class=""  placeholder="Book_Genre"       required>
+                            <input type="text" name="book_genre"value="<?php echo $row["book_genre"]?>" >
 
                         <label>Book Description</label>
-                            <input type="text" name="book_des"   class=""  placeholder="Book_Description" required>
+                            <input type="text" name="book_des"  value="<?php echo $row["book_des"]?>" >
 
                         <label>Book Price</label>
-                            <input type="text" name="book_price" class=""  placeholder="Book_Price"       required>
+                            <input type="text" name="book_price"value="<?php echo $row["book_price"]?>" >
 
                         <label>Book Quantity</label>
-                            <input type="text" name="book_qty"   class=""  placeholder="Book_Quantity"    required>
+                            <input type="text" name="book_qty"  value="<?php echo $row["book_qty"]?>" >
 
                         <label>Staff ID</label>
-                            <input type="text" name="staff_id"   class=""  value="1"disabled>
+                            <input type="text" name="staff_id"   class=""  value="<?php echo $row["staff_id"]?>"disabled>
 
                         <label>Book_image</label>
-                            <input type="file" name="book_img"  accept="image/jpg, image/jpeg, image/png" class=""       required>
+                            <input type="file" name="book_img"  accept="image/jpg, image/jpeg, image/png" class="" >
 
                         <div class="Add-product-button">
-                            <button class="Add-product-button" type="submit" name="addbook" >Submit</button>
+                            <button class="Add-product-button" type="submit" name="updatebook" >Submit</button>
                         </div>
                 </form>
             </div>
             <?php
 
-                if (isset($_POST["addbook"])) 	
+                if (isset($_POST["updatebook"])) 	
                 {
                     $bname = $_POST["book_name"];  	 
                     $bauthor=$_POST["book_author"];
@@ -123,7 +134,7 @@ include("dataconnection.php")
                     }
 
                     if(count($message)==0){
-                        $sql = "INSERT INTO book VALUES('','$bname','$bgenre','$bimg','$bdes','$bprice','$bqty','$sid','$bauthor')";
+                        $sql = "UPDATE book SET book_img='$bimg', book_name='$bname', book_author='$bauthor', book_genre='$bgenre', book_des='$bdes', book_price='$bprice',book_qty='$bqty'WHERE book_id='$bid';";
                         $result = $conn->query($sql);
                         if (move_uploaded_file($bimg_tmp_name, $target_file)) {
 
@@ -143,6 +154,7 @@ include("dataconnection.php")
                         echo $message;
                     }
                 }
+                
 
             ?>
         </div>
