@@ -123,8 +123,8 @@ include("header.php");
                     </div>
 
                     <form id="user_member" class="info" action="login_user.php" method="post">
-                        <label class="pad">Username</label>
-                            <input type="text" name="user_id" class="login" placeholder="Your Name" required>
+                        <label class="pad">Email</label>
+                            <input type="text" name="user_email" class="login" placeholder="Your Email" required>
                         <label class="pad">Password</label>
                             <input type="password" name="user_pw" class="login" placeholder="Password" required>
                         <div class="space_between">
@@ -140,8 +140,8 @@ include("header.php");
                     </form>
 
                     <form id="admin_member" class="info" action="login_staff.php" method="post">
-                        <label id="pad">Admin Id</label>
-                            <input type="text" name="staff_id" class="login" placeholder="Your Name" required>
+                        <label id="pad">Admin Email</label>
+                            <input type="text" name="staff_email" class="login" placeholder="Your Email" required>
                         <label id="pad">Password</label>
                             <input type="password" name="staff_pw" class="login" placeholder="Password" required>
                         <label>

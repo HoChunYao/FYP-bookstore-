@@ -4,7 +4,7 @@ session_start();
 
 include "dataconnection.php";
 
-if (isset($_POST['user_id']) && isset($_POST['user_pw'])) {
+if (isset($_POST['user_email']) && isset($_POST['user_pw'])) {
 
     function validate($data){
 
@@ -18,11 +18,11 @@ if (isset($_POST['user_id']) && isset($_POST['user_pw'])) {
 
     }
 
-    $uid = validate($_POST['user_id']);
+    $uemail = validate($_POST['user_email']);
 
     $pass = validate($_POST['user_pw']);
 
-    if (empty($uid)) {
+    if (empty($uemail)) {
 
         header("Location: index.php?error=User Name is required");
 
@@ -36,7 +36,7 @@ if (isset($_POST['user_id']) && isset($_POST['user_pw'])) {
 
     }else{
 
-        $sql = "SELECT * FROM user WHERE user_id='$uid' AND user_pw='$pass'";
+        $sql = "SELECT * FROM user WHERE user_email='$uemail' AND user_pw='$pass'";
 
         $result = mysqli_query($conn, $sql);
 
@@ -44,15 +44,14 @@ if (isset($_POST['user_id']) && isset($_POST['user_pw'])) {
 
             $row = mysqli_fetch_assoc($result);
 
-            if ($row['user_id'] === $uid && $row['user_pw'] === $pass) {
+            if ($row['user_email'] === $uemail && $row['user_pw'] === $pass) {
 
                 echo "Logged in!";
 
-                $_SESSION['user_name'] = $row['user_name'];
+                $_SESSION['user_email'] = $row['user_email'];
 
-                $_SESSION['name'] = $row['name'];
+                $_SESSION['user_pw'] = $row['user_pw'];
 
-                $_SESSION['id'] = $row['id'];
 
                 header("Location: customer_profile.php");
 

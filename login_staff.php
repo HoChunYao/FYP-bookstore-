@@ -4,7 +4,7 @@ session_start();
 
 include "dataconnection.php";
 
-if (isset($_POST['staff_id']) && isset($_POST['staff_pw'])) {
+if (isset($_POST['staff_email']) && isset($_POST['staff_pw'])) {
 
     function validate($data){
 
@@ -18,11 +18,11 @@ if (isset($_POST['staff_id']) && isset($_POST['staff_pw'])) {
 
     }
 
-    $uname = validate($_POST['staff_id']);
+    $stemail = validate($_POST['staff_email']);
 
     $pass = validate($_POST['staff_pw']);
 
-    if (empty($uname)) {
+    if (empty($stemail)) {
 
         header("Location: index.php?error=staff Name is required");
 
@@ -36,7 +36,7 @@ if (isset($_POST['staff_id']) && isset($_POST['staff_pw'])) {
 
     }else{
 
-        $sql = "SELECT * FROM staff WHERE staff_id='$uname' AND staff_pw='$pass'";
+        $sql = "SELECT * FROM staff WHERE staff_email='$stemail' AND staff_pw='$pass'";
 
         $result = mysqli_query($conn, $sql);
 
@@ -44,15 +44,13 @@ if (isset($_POST['staff_id']) && isset($_POST['staff_pw'])) {
 
             $row = mysqli_fetch_assoc($result);
 
-            if ($row['staff_id'] === $uname && $row['staff_pw'] === $pass) {
+            if ($row['staff_email'] === $stemail && $row['staff_pw'] === $pass) {
 
                 echo "Logged in!";
 
-                /*$_SESSION['staff_name'] = $row['staff_name'];
+                $_SESSION['staff_email'] = $row['staff_email'];
 
-                $_SESSION['name'] = $row['name'];
-
-                $_SESSION['id'] = $row['id'];*/
+                $_SESSION['staff_pw'] = $row['staff_pw'];
 
                 header("Location: admin_db.php");
 
