@@ -19,7 +19,12 @@ include("dataconnection.php");
 </head>
 
 <body>
-    
+    <script>
+        function confirmation(){
+            var answer=confirm("Do you really want to delete this product?");
+            return answer;
+        }
+    </script>
             <!-- ======================= Cards ================== -->
             <div class="cardBox" style="grid-template-columns: repeat(3, 1fr);">
                 <div class="card">
@@ -94,8 +99,8 @@ include("dataconnection.php");
                         <td><?php echo $row["book_price"]; ?></td>
                         <td><?php echo $row["book_qty"]; ?></td>
                         <td><?php echo $_SESSION["staff_id"]; ?></td>
-                        <td><a href="admin_.php?edit&bid=<?php echo $row["book_id"];?>">Edit</a></td>
-                        <td><a href="list_product.php?del&bid=<?php echo $row["book_id"];?>" onclick="return confirmation();">Delete</a></td>
+                        <td><a href="admin_productEdit.php?edit&bid=<?php echo $row["book_id"];?>">Edit</a></td>
+                        <td><a href="admin_product.php?del&bid=<?php echo $row["book_id"];?>" onclick="return confirmation();">Delete</a></td>
                     </tr>
 				    <?php
 				        }  		
@@ -115,14 +120,19 @@ include("dataconnection.php");
             </div>
         </div>
     </div>
-
+    <?php
+        if (isset($_GET["del"])) 
+        {
+            $bid=$_GET["bid"];
+            $sql="DELETE FROM book where book_id='$bid'";
+            $result = $conn->query($sql);
+            
+            header("Refresh:0");
+        }
+    ?>
     <!-- =========== Scripts =========  -->
     <script src="main.js">
 
-        function confirmation(){
-            var answer=confirm("Do you really want to delete this product?");
-            return answer;
-        }
 
     </script>
 
