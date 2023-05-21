@@ -1,10 +1,10 @@
 <?php
 include("admin_design.php");
 include("dataconnection.php");
-$x=0;
-$sql = "SELECT * FROM user ";
-$result = $conn->query($sql);
-$y = mysqli_num_rows($result);
+        $x=0;
+        $sql = "SELECT * FROM user ";
+        $result = $conn->query($sql);
+        $y = mysqli_num_rows($result);
 ?>
 <html>
     <head>
@@ -24,10 +24,6 @@ $y = mysqli_num_rows($result);
                         <div class="numbers"><?php echo $y;?></div>
                         <div class="cardName">Active member</div>
                     </div>
-
-                    <!--<div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
-                    </div>-->
                 </div>
 
                 <div class="card">
@@ -35,14 +31,10 @@ $y = mysqli_num_rows($result);
                         <div class="numbers">0</div>
                         <div class="cardName">Unactive member</div>
                     </div>
-
-                <!--    <div class="iconBx">
-                        <ion-icon name="cart-outline"></ion-icon>
-                    </div>-->
                 </div>
      </div>
 
-    <!-- ======================= member List ================== -->
+    <!-- ======================= Show Member List ================== -->
     <div class="table">
                 <table>
                     <tr>

@@ -129,7 +129,7 @@ include('dataconnection.php');
             }
 
             if(count($message)==0){
-                $sql = "INSERT INTO user VALUES(' ','$sname','$semail','$spw','$sphone','$sgender','$simg')";
+                $sql = "INSERT INTO staff VALUES(' ','$sname','$semail','$spw','$sphone','$sgender','$simg')";
                 $result = $conn->query($sql);
                 if (move_uploaded_file($simg_tmp_name, $target_file)) {
 

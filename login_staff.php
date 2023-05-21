@@ -2,7 +2,7 @@
 
 session_start(); 
 
-include "dataconnection.php";
+include ("dataconnection.php");
 
 if (isset($_POST['staff_email']) && isset($_POST['staff_pw'])) {
 
@@ -38,22 +38,25 @@ if (isset($_POST['staff_email']) && isset($_POST['staff_pw'])) {
 
         $sql = "SELECT * FROM staff WHERE staff_email='$stemail' AND staff_pw='$pass'";
 
-        $result = mysqli_query($conn, $sql);
+        $result = $conn->query($sql);
 
         if (mysqli_num_rows($result) === 1) {
 
-            $row = mysqli_fetch_assoc($result);
+            $row = $result->fetch_assoc();
 
             if ($row['staff_email'] === $stemail && $row['staff_pw'] === $pass) {
 
-                echo "Logged in!";
-
-                $_SESSION['staff_email'] = $row['staff_email'];
+                $_SESSION['staff_id'] = $row['staff_id'];
 
                 $_SESSION['staff_pw'] = $row['staff_pw'];
 
-                header("Location: admin_db.php");
+                $_SESSION['staff_email'] = $row['staff_email'];
 
+                $message="login succeffully";
+                    echo "<SCRIPT> 
+                    alert('$message')
+                        window.location.replace('admin_db.php');
+                    </SCRIPT>";
                 exit();
 
             }else{

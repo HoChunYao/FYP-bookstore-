@@ -1,5 +1,18 @@
 <?php
-include("admin_design.php");
+    session_start();
+    include("admin_design.php");
+    include("dataconnection.php");
+
+    if(isset($_SESSION['staff_email']) && isset($_SESSION['staff_pw']) ){
+
+        $sid=$_SESSION['staff_id'];
+        $semail=$_SESSION['staff_email'];
+        $spw=$_SESSION['staff_pw'];
+
+        $sql = "SELECT * FROM staff where staff_id ='$sid' ";
+        
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,25 +97,28 @@ include("admin_design.php");
             <!-- ======================= Profile ================== -->
             <div class="profile">
                 <div class="profile_image">
-                    <img src="media/image.jpg" alt="">
+                    <?php
+                    if ($result->num_rows > 0) {
+                    ?>
+                    <?php echo '<img src="staff_img/'.$row['staff_img'].'">' ?>
 
                     <div class="profile-info">
                             <h1 class="font-normal">Admin Profile</h1>
 
                             <label class="text">Staff Id</label>
-                                <input type="s_id" id="s_id" value="ST1001" disabled>
+                                <input type="s_id" id="s_id" value="<?php echo $row["staff_id"]; ?>" disabled>
 
                             <label class="text">Staff's Name</label>
-                                <input type="s_name" id="s_name" value="Ho Chun Yao" disabled>
+                                <input type="s_name" id="s_name" value="<?php echo $row["staff_name"]; ?>" disabled>
 
                             <label class="text">Staff Email</label>
-                                <input type="s_email" id="s_email" value="1211203559@student.mmu.edu.my" disabled>
+                                <input type="s_email" id="s_email" value="<?php echo $row["staff_email"]; ?>" disabled>
 
                             <label class="text">Staff Phone</label>
-                                <input type="s_phone" id="s_phone" value="018-790 2295" disabled>
+                                <input type="s_phone" id="s_phone" value="<?php echo $row["staff_phone"]; ?>" disabled>
 
                             <label class="text">Staff Gender</label>
-                                <input type="s_phone" id="s_phone" value="Male" disabled>
+                                <input type="s_gender" id="s_gender" value="<?php echo $row["staff_gender"]; ?>" disabled>
 
                             <button class="submit-btn" type="button" ><a href="admin_profileEdit.php">Edit</button>
                         </form>
@@ -123,3 +139,11 @@ include("admin_design.php");
 </body>
 
 </html>
+<?php
+    }//if else 
+    else{
+        echo "error !!!";
+    }
+}
+$conn->close();
+?>
