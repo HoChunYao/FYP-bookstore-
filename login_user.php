@@ -38,11 +38,11 @@ if (isset($_POST['user_id']) && isset($_POST['user_pw'])) {
 
         $sql = "SELECT * FROM user WHERE user_id='$uname' AND user_pw='$pass'";
 
-        $result = mysqli_query($conn, $sql);
+        $result = $conn->query($sql);
 
         if (mysqli_num_rows($result) === 1) {
 
-            $row = mysqli_fetch_assoc($result);
+            $row = $result->fetch_assoc();
 
             if ($row['user_id'] === $uname && $row['user_pw'] === $pass) {
 
