@@ -1,5 +1,6 @@
 <?php
 include("admin_design.php");
+include("dataconnection.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +19,12 @@ include("admin_design.php");
 </head>
 
 <body>
+    <script>
+        function confirmation(){
+            var answer=confirm("Do you really want to delete this product?");
+            return answer;
+        }
+    </script>
             <!-- ======================= Cards ================== -->
             <div class="cardBox" style="grid-template-columns: repeat(3, 1fr);">
                 <div class="card">
@@ -73,71 +80,31 @@ include("admin_design.php");
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Staff Id</th>
-                        <th>Action</th>
+                        <th colspan="2";>Action</th>
                     </tr>
                 </div>
                 <tbody>
+                <?php
+                        $sql = "SELECT * FROM book";
+                        $result = $conn->query($sql);
+                        while($row = $result->fetch_assoc())
+                        {
+                    ?>			
                     <tr>
-                        <td>
-                            <img src="media/book1.jpg" alt="">
-                        </td>
-                        <td>1</td>
-                        <td>Product Leardership</td>
-                        <td>Education</td>
-                        <td>...</td>
-                        <td>RM 199.00</td>
-                        <td>10</td>
-                        <td>ST1001</td>
-                        <td class="table-icon">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </td>
+                        <td><?php echo '<img src="book_img/'.$row['book_img'].'">' ?></td>
+                        <td><?php echo $row["book_id"]; ?></td>
+                        <td><?php echo $row["book_name"]; ?></td>
+                        <td><?php echo $row["book_genre"]; ?></td>
+                        <td><?php echo $row["book_des"]; ?></td>
+                        <td><?php echo $row["book_price"]; ?></td>
+                        <td><?php echo $row["book_qty"]; ?></td>
+                        <td><?php echo $_SESSION["staff_id"]; ?></td>
+                        <td><a href="admin_productEdit.php?edit&bid=<?php echo $row["book_id"];?>">Edit</a></td>
+                        <td><a href="admin_product.php?del&bid=<?php echo $row["book_id"];?>" onclick="return confirmation();">Delete</a></td>
                     </tr>
-
-                    <tr>
-                        <td>
-                            <img src="media/book2.jpg" alt="">
-                        </td>
-                        <td>1</td>
-                        <td>The mind of Leader</td>
-                        <td>Education</td>
-                        <td>...</td>
-                        <td>RM 99.00</td>
-                        <td>15</td>
-                        <td>ST1001</td>
-                        <td class="table-icon">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="media/book1.jpg" alt="">
-                        </td>
-                        <td>1</td>
-                        <td>Product Leardership</td>
-                        <td>Education</td>
-                        <td>...</td>
-                        <td>RM 199.00</td>
-                        <td>10</td>
-                        <td>ST1001</td>
-                        <td class="table-icon">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="media/book2.jpg" alt="">
-                        </td>
-                        <td>1</td>
-                        <td>The mind of Leader</td>
-                        <td>Education</td>
-                        <td>...</td>
-                        <td>RM 99.00</td>
-                        <td>15</td>
-                        <td>ST1001</td>
-                        <td class="table-icon">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </td>
-                    </tr>
+				    <?php
+				        }  		
+			        ?>
                 </tbody>
 
                     <tr>
@@ -153,9 +120,21 @@ include("admin_design.php");
             </div>
         </div>
     </div>
-
+    <?php
+        if (isset($_GET["del"])) 
+        {
+            $bid=$_GET["bid"];
+            $sql="DELETE FROM book where book_id='$bid'";
+            $result = $conn->query($sql);
+            
+            header("Refresh:0");
+        }
+    ?>
     <!-- =========== Scripts =========  -->
-    <script src="main.js"></script>
+    <script src="main.js">
+
+
+    </script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

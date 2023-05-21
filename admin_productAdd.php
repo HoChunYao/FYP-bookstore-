@@ -63,6 +63,7 @@ include("dataconnection.php")
             <div class="product-form">
                 <form id="addProductForm" name="addProductForm" enctype="multipart/form-data" method="POST">
                     <h2 class="font-normal">Add Product</h2>
+
                         <label>Book Name</label>
                             <input type="text" name="book_name"  class=""  placeholder="Book_name"        required>
 
@@ -76,13 +77,13 @@ include("dataconnection.php")
                             <input type="text" name="book_des"   class=""  placeholder="Book_Description" required>
 
                         <label>Book Price</label>
-                            <input type="text" name="book_price" class=""  placeholder="RM 0.00"       required>
+                            <input type="text" name="book_price" class=""  placeholder="Book_Price"       required>
 
                         <label>Book Quantity</label>
                             <input type="text" name="book_qty"   class=""  placeholder="Book_Quantity"    required>
 
                         <label>Staff ID</label>
-                            <input type="text" name="staff_id"   class=""  value="1" disabled>
+                            <input type="text" name="staff_id"   class=""  value="1"disabled>
 
                         <label>Book_image</label>
                             <input type="file" name="book_img"  accept="image/jpg, image/jpeg, image/png" class=""       required>
@@ -146,3 +147,14 @@ include("dataconnection.php")
             ?>
         </div>
     </div>
+
+    <!-- =========== Scripts =========  -->
+    <script src="main.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/1cf0f3907a.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
