@@ -66,8 +66,6 @@ include('dataconnection.php');
             <div class="form">
                 <form id="addVoucherForm" name="addVoucherForm" enctype="multipart/form-data" method="POST">
                     <h2 class="font-normal">Add Member</h2>
-                        <label class="text">Member Id</label>
-                            <input type="text" placeholder="member_id" name="member_id"               required>
 
                         <label class="text">Member Name</label>
                             <input type="text" placeholder="member_name" name="member_name"            required>
@@ -109,8 +107,7 @@ include('dataconnection.php');
 
 <?php
         if (isset($_POST["memberadd"])) 	
-        {
-            $mid = $_POST['member_id'];  	 
+        {	 
             $mname=$_POST['member_name'];
             $memail = $_POST['member_email'];
             $mpw =$_POST['member_pw'];
@@ -119,7 +116,7 @@ include('dataconnection.php');
             $mpoint = $_POST['member_point'];
             $madds=$_POST['member_address'];
          
-            $sql = "INSERT INTO user VALUES('$mid','$mname','$memail','$mpw','$mphone','$mgender','$mpoint','$madds')";
+            $sql = "INSERT INTO user VALUES(' ','$mname','$memail','$mpw','$mphone','$mgender','$mpoint','$madds')";
 
             if (mysqli_query($conn, $sql)) {
                 echo "New record created successfully";
