@@ -1,6 +1,6 @@
 <?php
 include("admin_design.php");
-include("dataconnection.php")
+include("dataconnection.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,7 +83,7 @@ include("dataconnection.php")
                             <input type="text" name="book_qty"   class=""  placeholder="Book_Quantity"    required>
 
                         <label>Staff ID</label>
-                            <input type="text" name="staff_id"   class=""  value="1"disabled>
+                            <input type="text" name="staff_id"   class=""  value="1" disabled>
 
                         <label>Book_image</label>
                             <input type="file" name="book_img"  accept="image/jpg, image/jpeg, image/png" class=""       required>

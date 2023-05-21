@@ -1,6 +1,11 @@
 <?php
 include("admin_design.php");
 include("dataconnection.php");
+
+        $sql = "SELECT * FROM book";
+        $result = $conn->query($sql);
+        $x = 0;
+        $y = mysqli_num_rows($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +34,7 @@ include("dataconnection.php");
             <div class="cardBox" style="grid-template-columns: repeat(3, 1fr);">
                 <div class="card">
                     <div>
-                        <div class="numbers">3 00</div>
+                        <div class="numbers"><?php echo $y;?></div>
                         <div class="cardName">Total Product</div>
                     </div>
 
@@ -72,6 +77,7 @@ include("dataconnection.php");
                 </tr>  
                 <div class="table-head">
                     <tr>
+                        <th>No.</th>
                         <th>Book image</th>
                         <th>Book id</th>
                         <th>Book name</th>
@@ -85,10 +91,9 @@ include("dataconnection.php");
                 </div>
                 <tbody>
                 <?php
-                        $sql = "SELECT * FROM book";
-                        $result = $conn->query($sql);
                         while($row = $result->fetch_assoc())
                         {
+                            $x++;
                     ?>			
                     <tr>
                         <td><?php echo '<img src="book_img/'.$row['book_img'].'">' ?></td>

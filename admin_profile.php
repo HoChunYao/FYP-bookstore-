@@ -90,19 +90,19 @@ include("admin_design.php");
                             <h1 class="font-normal">Admin Profile</h1>
 
                             <label class="text">Staff Id</label>
-                            <input type="s_id" id="s_id" value="ST1001" disabled>
+                                <input type="s_id" id="s_id" value="ST1001" disabled>
 
                             <label class="text">Staff's Name</label>
-                            <input type="s_name" id="s_name" value="Ho Chun Yao" disabled>
+                                <input type="s_name" id="s_name" value="Ho Chun Yao" disabled>
 
                             <label class="text">Staff Email</label>
-                            <input type="s_email" id="s_email" value="1211203559@student.mmu.edu.my" disabled>
+                                <input type="s_email" id="s_email" value="1211203559@student.mmu.edu.my" disabled>
 
                             <label class="text">Staff Phone</label>
-                            <input type="s_phone" id="s_phone" value="018-790 2295" disabled>
+                                <input type="s_phone" id="s_phone" value="018-790 2295" disabled>
 
                             <label class="text">Staff Gender</label>
-                            <input type="s_phone" id="s_phone" value="Male" disabled>
+                                <input type="s_phone" id="s_phone" value="Male" disabled>
 
                             <button class="submit-btn" type="button" ><a href="admin_profileEdit.php">Edit</button>
                         </form>
