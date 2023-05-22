@@ -1,4 +1,5 @@
 <?php
+
 include("admin_design.php");
 include("dataconnection.php");
 ?>
@@ -6,7 +7,7 @@ include("dataconnection.php");
 <html lang="en">
 
 <head>
-    <title>Admin Add Product</title>
+    <title>Admin Product Edit</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="CSS_folder/admin_db.css">
     <link rel="stylesheet" href="CSS_folder/admin_addproduct.css">

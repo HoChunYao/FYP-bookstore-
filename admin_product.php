@@ -1,5 +1,6 @@
 <?php
-session_start();
+
+
 include("admin_design.php");
 include("dataconnection.php");
 

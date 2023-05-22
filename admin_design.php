@@ -1,3 +1,10 @@
+<?php
+session_start();
+if( !isset($_SESSION["staff_id"]) ){
+    header("location:login_page.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

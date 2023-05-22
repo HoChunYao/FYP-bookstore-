@@ -1,11 +1,11 @@
 <?php
-    session_start();
+    
     include("admin_design.php");
     include("dataconnection.php");
 ?>
 <html>
     <head>
-        <title>Admin Profile Edit</title>
+        <title>Member Profile Edit</title>
         <link href="CSS_folder/admin_form_design.css" rel="stylesheet" type="text/css"/>
     </head>
 <body>
@@ -19,26 +19,26 @@
 		?>
         <div class="form">
             <form id="ProfileEditForm" name="ProfileEditForm" enctype="multipart/form-data" method="POST">
-                <h2 class="font-normal">Admin Profile</h2>
-                <label class="text">user Id</label>
+                <h2 class="font-normal">Update User Profile</h2>
+                <label class="text">User Id</label>
                     <input type="text" name="user_id"    class=""  value="<?php echo $row['user_id'];?>"       disabled>
 
-                <label class="text">user Name</label>
+                <label class="text">User Name</label>
                     <input type="text" name="user_name"  class=""  value="<?php echo $row["user_name"]; ?>"       >
 
-                <label class="text">user Email</label>
+                <label class="text">User Email</label>
                     <input type="text" name="user_email" class=""  value="<?php echo $row["user_email"]; ?>"      >
 
-                <label class="text">user Gender</label>
+                <label class="text">User Gender</label>
                     <input type="text" name="user_gender"   class=""  value="<?php echo $row["user_gender"]; ?>"   >
 
-                <label class="text">user Phone</label>
+                <label class="text">User Phone</label>
                     <input type="text" name="user_phone"   class=""  value="<?php echo $row["user_phone"]; ?>"   >
                     
-                <label class="text">user point</label>
+                <label class="text">User point</label>
                         <input type="text"  name="user_point" value="<?php echo $row["user_point"]; ?>"       >
                         
-                <label class="text">user Address</label>
+                <label class="text">User Address</label>
                         <input type="text"  name="user_address" value="<?php echo $row["user_address"]; ?>"        >
 
 
