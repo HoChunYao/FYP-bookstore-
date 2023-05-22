@@ -1,4 +1,3 @@
-
 <?php
 include("admin_design.php");
 include("dataconnection.php");
