@@ -74,7 +74,7 @@ include("dataconnection.php");
                 <tr>
                     <td colspan="4"><h2>Product Detail</h2></td>
                     <a href="admin_product.php">
-                    <td colspan="5"><button type="button" class="all-btn" >See all product</button></td>
+                    <td colspan="7"><button type="button" class="all-btn" >See all product</button></td>
                     </a>
                 </tr>  
                 <div class="table-head">

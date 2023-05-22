@@ -48,7 +48,7 @@ include("dataconnection.php");
             <div class="table">
                 <table>
                     </tr>
-                        <td colspan="7">
+                        <td colspan="8">
                             <h2>Voucher Detail</h2>
                         </td>
                         <td colspan="1">
@@ -64,11 +64,11 @@ include("dataconnection.php");
                             <th>Voucher Quantity</th>
                             <th>Voucher point</th>
                             <th>Staff Id</th>
-                            <th colspan='2';>Action</th>    
+                            <th colspan="2">Action</th>    
                         </tr>
                     </div>
                     <tbody>
-                    <tr>
+                    
                     <?php
                         while($row = $result->fetch_assoc())
                         {
@@ -82,13 +82,13 @@ include("dataconnection.php");
                         <td><?php echo $row["reward_qty"]; ?></td>
                         <td><?php echo $row["reward_point"]; ?></td>
                         <td><?php echo $_SESSION['staff_id']; ?></td>
-                        <td ><a href="admin_voucherEdit.php?edit&rwid=<?php echo $row["reward_id"];?>">Edit</a></td>
+                        <td><a href="admin_voucherEdit.php?edit&rwid=<?php echo $row["reward_id"];?>">Edit</a></td>
                         <td><a href="admin_voucher.php?del&rwid=<?php echo $row["reward_id"];?>" onclick="return confirmation();">Delete</a></td>
                     </tr>
 				    <?php
 				        }  		
 			        ?>
-                    </tr>
+                    
                     </tbody>
 
 

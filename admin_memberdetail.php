@@ -17,6 +17,12 @@ include("dataconnection.php");
     </style>
     </head>
 <body>
+    <script>
+        function confirmation(){
+            var answer=confirm("Do you really want to delete this product?");
+            return answer;
+        }
+    </script>
      <!-- ======================= Cards ================== -->
      <div class="cardBox" style="    grid-template-columns: repeat(2, 1fr);">
                 <div class="card">
@@ -38,10 +44,10 @@ include("dataconnection.php");
     <div class="table">
                 <table>
                     <tr>
-                        <td colspan="4">
+                        <td colspan="8">
                             <h2>Member list</h2>
                         </td>
-                        <td colspan="4">
+                        <td colspan="1">
                                 <button type="button" class="all-btn" ><a href="admin_memberdetail.php">See All Member</a></button>
                         </td>
                     </tr>
@@ -54,7 +60,7 @@ include("dataconnection.php");
                         <th>Member Phone</th>
                         <th>Member Point</th>
                         <th>Member Address</th>
-                        <th>Action</th>
+                        <th colspan="2">Action</th>
                     </tr>
                     <?php
                         if ($result->num_rows > 0) {
@@ -71,6 +77,7 @@ include("dataconnection.php");
                             <td><?php echo $row["user_point"] ?></td>
                             <td><?php echo $row["user_address"] ?></td>
                             <td><a href="admin_memberEdit.php?edit&mid=<?php echo $row["user_id"];?>">Edit</a></td>
+                            <td><a href="admin_product.php?del&mid=<?php echo $row["user_id"];?>" onclick="return confirmation();">Delete</a></td>
                         </div>
                     </tr>
                     <?php 
@@ -83,6 +90,16 @@ include("dataconnection.php");
                         </tr>
                 </table>
             </div>
+            <?php
+                if (isset($_GET["del"])) 
+                {
+                    $mid=$_GET["mid"];
+                    $sql="DELETE FROM user where user_id='$mid'";
+                    $result = $conn->query($sql);
+                    
+                    header("Refresh:0");
+                }
+            ?>
 </body>
 </html>
 <?php
