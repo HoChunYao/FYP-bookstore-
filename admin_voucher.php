@@ -83,7 +83,7 @@ include("dataconnection.php");
                         <td><?php echo $row["reward_qty"]; ?></td>
                         <td><?php echo $row["reward_point"]; ?></td>
                         <td><?php echo $_SESSION['staff_id']; ?></td>
-                        <td><a href="admin_voucherEdit.php?edit&rwid=<?php echo $row["reward_id"];?>">Edit</a></td>
+                        <td ><a href="admin_voucherEdit.php?edit&rwid=<?php echo $row["reward_id"];?>">Edit</a></td>
                         <td><a href="admin_voucher.php?del&rwid=<?php echo $row["reward_id"];?>" onclick="return confirmation();">Delete</a></td>
                     </tr>
 				    <?php

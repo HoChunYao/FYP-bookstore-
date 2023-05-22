@@ -70,9 +70,7 @@ include("dataconnection.php");
                             <td><?php echo $row["user_phone"] ?></td>
                             <td><?php echo $row["user_point"] ?></td>
                             <td><?php echo $row["user_address"] ?></td>
-                            <td>
-                                <button class="edit-btn" type="button">Edit</button>
-                            </td>
+                            <td><a href="admin_memberEdit.php?edit&mid=<?php echo $row["user_id"];?>">Edit</a></td>
                         </div>
                     </tr>
                     <?php 

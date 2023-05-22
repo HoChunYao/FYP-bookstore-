@@ -36,10 +36,10 @@
                     <input type="password" name="staff_pw" class=""  placeholder="Staff_password"     >
 
                 <label class="text">Staff Gender</label>
-                    <input type="text" name="staff_gender"   class=""  value="<?php echo $row["staff_phone"]; ?>"   >
+                    <input type="text" name="staff_gender"   class=""  value="<?php echo $row["staff_gender"]; ?>"   >
 
                 <label class="text">Staff Phone</label>
-                    <input type="text" name="staff_phone"   class=""  value="<?php echo $row["staff_gender"]; ?>"   >
+                    <input type="text" name="staff_phone"   class=""  value="<?php echo $row["staff_phone"]; ?>"   >
                 
                 <label class="text">Staff Image</label>
                     <input type="file" name="staff_img"  accept="image/jpg, image/jpeg, image/png" class=""       > 
